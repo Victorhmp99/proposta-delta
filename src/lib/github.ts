@@ -1,6 +1,6 @@
 const OWNER = "Victorhmp99";
 const REPO = "proposta-delta";
-const BRANCH = "master";
+const BRANCH = "main";
 const FILE_PATH = "public/content.json";
 
 const TOKEN_KEY = "gh_edit_token";
