@@ -55,7 +55,7 @@ function BrandEmblem({ sides }: { sides: string[] }) {
       >
         <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-signal shadow-[0_0_12px_3px_rgba(18,216,242,0.8)]" />
       </motion.div>
-      <div aria-hidden className="absolute inset-[20%] rounded-full bg-electric/25 blur-[70px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-[20%] rounded-full bg-electric/25 blur-[70px]" />
 
       <Float distance={10} duration={6} className="absolute inset-[22%] flex items-center justify-center">
         <Image
@@ -96,7 +96,7 @@ export function Origin() {
   const c = content.origin;
   return (
     <Section id="origem" tone="navy" panel>
-      <div aria-hidden className="absolute -right-40 top-0 h-full w-[60%] bg-stripes opacity-40 mask-radial" />
+      <div aria-hidden className="pointer-events-none absolute -right-40 top-0 h-full w-[60%] bg-stripes opacity-40 mask-radial" />
       <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <Reveal>
@@ -191,7 +191,7 @@ export function Difference() {
   const c = content.difference;
   return (
     <Section id="diferenca" tone="deep" transition="slideLeft">
-      <div aria-hidden className="absolute inset-0 bg-dots opacity-60" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots opacity-60" />
       <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
         <SlideReveal direction="left">
           <Eyebrow>{c.eyebrow}</Eyebrow>
@@ -690,7 +690,7 @@ export function Plans() {
 
   return (
     <Section id="planos" tone="deep" panel wide className="perspective-1200">
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[60%] bg-grid opacity-40 mask-radial" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-grid opacity-40 mask-radial" />
       <Reveal className="text-center">
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <h2 className="mx-auto max-w-2xl text-3xl text-mist sm:text-5xl">{c.heading}</h2>
@@ -801,7 +801,7 @@ export function Estrutura() {
 
   return (
     <Section id="estrutura-delta" tone="navy" panel>
-      <div aria-hidden className="absolute inset-0 bg-stripes opacity-30 mask-radial" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-stripes opacity-30 mask-radial" />
       <Reveal className="flex flex-col items-center gap-5 py-4 text-center">
         <Eyebrow>{c.eyebrow}</Eyebrow>
         <span className="text-gradient-delta font-display text-5xl font-extrabold leading-none tracking-tight sm:text-7xl">
@@ -1076,7 +1076,7 @@ export function Onboarding() {
 
       <div className="relative mt-14">
         {/* trilho: vertical no celular, horizontal no desktop */}
-        <div aria-hidden className="absolute bottom-4 left-[15px] top-4 w-px bg-white/10 lg:bottom-auto lg:left-4 lg:right-4 lg:top-[15px] lg:h-px lg:w-auto" />
+        <div aria-hidden className="pointer-events-none absolute bottom-4 left-[15px] top-4 w-px bg-white/10 lg:bottom-auto lg:left-4 lg:right-4 lg:top-[15px] lg:h-px lg:w-auto" />
         <motion.div
           aria-hidden
           initial={{ scaleY: 0 }}
@@ -1127,7 +1127,7 @@ export function Closing() {
       id="fechamento"
       className="relative flex min-h-[90svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-4 py-28 text-center"
     >
-      <div aria-hidden className="absolute inset-0 bg-grid mask-radial opacity-60" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid mask-radial opacity-60" />
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[min(110vw,900px)] w-[min(110vw,900px)] -translate-x-1/2 -translate-y-1/2 opacity-70">
         <DeltaCanvas className="h-full w-full" />
       </div>

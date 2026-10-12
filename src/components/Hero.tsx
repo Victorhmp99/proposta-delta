@@ -120,7 +120,7 @@ export function Hero() {
       className="relative z-0 flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-ink px-4 pb-40 pt-32 text-center"
     >
       {/* fundo: grade técnica + brilhos */}
-      <div aria-hidden className="absolute inset-0 bg-grid mask-radial opacity-70" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid mask-radial opacity-70" />
       <motion.div
         aria-hidden
         className="absolute -top-48 left-1/2 h-[70vh] w-[80vw] -translate-x-1/2 rounded-full bg-electric/20 blur-[140px]"

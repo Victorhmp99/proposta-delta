@@ -230,7 +230,7 @@ export function MethodDelta() {
 
   return (
     <section id="metodo" className="relative scroll-mt-0 bg-ink">
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-40 mask-fade-y" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-40 mask-fade-y" />
 
       <div className="relative mx-auto max-w-5xl px-4 pt-24 sm:px-6 sm:pt-32">
         <Reveal>
@@ -246,7 +246,7 @@ export function MethodDelta() {
           <div className="mx-auto grid w-full max-w-6xl items-center gap-4 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
             {/* visual */}
             <div className="relative order-1 mx-auto aspect-[500/440] w-[min(80vw,40svh)] sm:w-[min(70vw,46svh)] lg:order-2 lg:w-full lg:max-w-[560px]">
-              <div aria-hidden className="absolute inset-[10%] rounded-full bg-electric/15 blur-[80px]" />
+              <div aria-hidden className="pointer-events-none absolute inset-[10%] rounded-full bg-electric/15 blur-[80px]" />
               <TriangleVisual p={p} phase={phase} />
             </div>
 
