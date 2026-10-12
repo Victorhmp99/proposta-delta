@@ -195,7 +195,7 @@ export const defaultContent = {
     eyebrow: "Resultados",
     heading: "Resultado real, em negócios reais.",
     intro:
-      "Prints de resultados de clientes atendidos pela nossa equipe. A pergunta que falta responder é: o que está fazendo o seu negócio esperar?",
+      "Empresas que já trabalham com a Delta. A pergunta que falta responder é: o que está fazendo o seu negócio esperar?",
   },
 
   plans: {

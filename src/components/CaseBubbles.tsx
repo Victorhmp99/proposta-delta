@@ -6,14 +6,13 @@ import Image from "next/image";
 import { asset } from "@/lib/basePath";
 
 const images = [
-  "5037628289387793363.jpg",
-  "5037628289387793365.jpg",
-  "5037628289387793366.jpg",
-  "5037628289387793367.jpg",
-  "5037628289387793368.jpg",
-  "5037628289387793369.jpg",
-  "5037628289387793370.jpg",
-  "5037628289387793371.jpg",
+  "inovar.webp",
+  "vacinasys.webp",
+  "laura-lozy.webp",
+  "byholy.webp",
+  "marla-fantim.webp",
+  "sun-odontologia.webp",
+  "stephanny-melo.webp",
 ];
 
 /* Grade de células com margem generosa nas bordas — mesmo no auge do
@@ -29,7 +28,7 @@ const CELLS = [
 ];
 
 const SLOT_COUNT = 5;
-const MAX_SCALE = 1.9;
+const MAX_SCALE = 1.5;
 
 function randomBetween(min: number, max: number) {
   return min + Math.random() * (max - min);
@@ -54,7 +53,7 @@ function Bubble({
   const [cycle, setCycle] = useState(0);
   const [src, setSrc] = useState<string | null>(null);
   const [cellIndex, setCellIndex] = useState<number | null>(null);
-  const [size] = useState(() => randomBetween(130, 178));
+  const [size] = useState(() => randomBetween(170, 230));
   const currentSrcRef = useRef<string | null>(null);
   const currentCellRef = useRef<number | null>(null);
 
@@ -104,7 +103,7 @@ function Bubble({
     <motion.div
       key={cycle}
       className="absolute"
-      style={{ top: cell.top, left: cell.left, width: size, height: size * 1.3 }}
+      style={{ top: cell.top, left: cell.left, width: size * 1.42, height: size }}
       initial={{ opacity: 0, scale: 0 }}
       animate={{
         opacity: [0, 1, 1, 1, 0],
@@ -126,7 +125,7 @@ function Bubble({
           src={asset(`/cases/${src}`)}
           alt="Resultado de cliente"
           fill
-          sizes="160px"
+          sizes="330px"
           className="object-contain"
         />
       </motion.div>
