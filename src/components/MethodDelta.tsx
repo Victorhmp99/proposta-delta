@@ -150,7 +150,9 @@ function TriangleVisual({ p, phase }: { p: MotionValue<number>; phase: number })
           fill="none"
           stroke="#12D8F2"
           strokeWidth="1.5"
-          animate={{ r: [12, 70], opacity: [0.9, 0] }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
+          initial={{ scale: 0.6, opacity: 0.9 }}
+          animate={{ scale: [0.6, 3.5], opacity: [0.9, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
         />
       )}
