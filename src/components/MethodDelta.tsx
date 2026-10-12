@@ -54,7 +54,7 @@ function TriangleVisual({ p, phase }: { p: MotionValue<number>; phase: number })
   return (
     <svg viewBox="0 0 500 440" className="h-full w-full overflow-visible" aria-hidden>
       <defs>
-        <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0.2">
+        <linearGradient id="dg" gradientUnits="userSpaceOnUse" x1="48" y1="40" x2="452" y2="392">
           <stop offset="0%" stopColor="#812CFF" />
           <stop offset="55%" stopColor="#087BFA" />
           <stop offset="100%" stopColor="#12D8F2" />
