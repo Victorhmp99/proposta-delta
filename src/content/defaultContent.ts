@@ -192,10 +192,10 @@ export const defaultContent = {
   },
 
   results: {
-    eyebrow: "Resultados",
-    heading: "Resultado real, em negócios reais.",
+    eyebrow: "Parceiros",
+    heading: "Empresas que já confiaram no nosso trabalho.",
     intro:
-      "Empresas que já trabalham com a Delta. A pergunta que falta responder é: o que está fazendo o seu negócio esperar?",
+      "Clínicas, profissionais da saúde e negócios de diferentes segmentos que já trabalham com a Delta. A pergunta que falta responder é: o que está fazendo o seu negócio esperar?",
   },
 
   plans: {

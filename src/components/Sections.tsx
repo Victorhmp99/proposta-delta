@@ -630,16 +630,16 @@ export function CRC() {
   );
 }
 
-/* ---------- 10. RESULTADOS ---------- */
+/* ---------- 10. EMPRESAS QUE JÁ CONFIARAM ---------- */
 export function Cases() {
   const { content } = useContent();
   const c = content.results;
   return (
-    <Section id="resultados" tone="ink" transition="zoomOut">
+    <Section id="parceiros" tone="ink" transition="zoomOut">
       <Reveal>
         <Eyebrow>{c.eyebrow}</Eyebrow>
-        <h2 className="max-w-2xl text-3xl text-mist sm:text-5xl">{c.heading}</h2>
-        <p className="mt-4 max-w-xl leading-relaxed text-mist/70">{c.intro}</p>
+        <h2 className="max-w-3xl text-3xl text-mist sm:text-5xl">{c.heading}</h2>
+        <p className="mt-4 max-w-2xl leading-relaxed text-mist/70">{c.intro}</p>
       </Reveal>
 
       <Reveal delay={0.1}>

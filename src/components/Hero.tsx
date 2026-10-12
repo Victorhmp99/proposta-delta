@@ -46,7 +46,7 @@ export function TopBar() {
   const links = [
     { href: "#metodo", label: "Método" },
     { href: "#time", label: "Time" },
-    { href: "#resultados", label: "Resultados" },
+    { href: "#parceiros", label: "Parceiros" },
     { href: "#planos", label: "Planos" },
   ];
 

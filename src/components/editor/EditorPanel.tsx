@@ -159,7 +159,7 @@ export function EditorPanel({ onClose }: { onClose: () => void }) {
             <Field label="Frase final" value={d.crc.kicker} onChange={(v) => patch("crc", { ...d.crc, kicker: v })} />
           </Section>
 
-          <Section title="Resultados">
+          <Section title="Empresas que já confiaram">
             <Field label="Título" value={d.results.heading} onChange={(v) => patch("results", { ...d.results, heading: v })} />
             <TextArea label="Texto de apoio" value={d.results.intro} onChange={(v) => patch("results", { ...d.results, intro: v })} />
           </Section>
