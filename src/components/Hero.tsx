@@ -167,28 +167,31 @@ export function Hero() {
           {c.badge}
         </motion.span>
 
-        <h1 className="max-w-4xl text-[2.1rem] font-extrabold leading-[1.06] text-mist sm:text-5xl lg:text-[4.1rem]">
-          <SplitWords text={c.quoteLine1} delay={0.25} />
-          <br />
-          <SplitWords text={c.quoteLine2} delay={0.5} className="text-gradient-delta" />
-        </h1>
-
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.1, ease: EASE }}
-          className="mt-8 font-display text-xs font-semibold uppercase tracking-[0.42em] text-mist/90 sm:text-sm"
+          transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+          className="mb-5 font-display text-xs font-semibold uppercase tracking-[0.42em] text-mist/80 sm:text-sm"
         >
           {c.title}
         </motion.p>
-        <motion.p
+
+        <h1 className="max-w-5xl text-[2.1rem] font-extrabold leading-[1.06] text-mist sm:text-5xl lg:text-[3.9rem]">
+          <SplitWords text={c.quoteLine1} delay={0.3} />
+        </h1>
+        <p className="mt-5 max-w-5xl font-display text-lg font-bold leading-snug sm:text-2xl lg:text-[1.65rem]">
+          <SplitWords text={c.quoteLine2} delay={0.75} className="text-gradient-delta" />
+        </p>
+
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.2, ease: EASE }}
-          className="mt-2 text-sm text-steel sm:text-base"
+          transition={{ duration: 0.9, delay: 1.3, ease: EASE }}
+          className="mt-9 flex max-w-2xl flex-col items-center gap-2 border-t border-white/10 pt-7"
         >
-          {c.subtitle}
-        </motion.p>
+          <p className="font-display text-base font-bold text-mist sm:text-lg">{c.subtitle}</p>
+          <p className="text-sm leading-relaxed text-mist/65 sm:text-base">{c.why}</p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

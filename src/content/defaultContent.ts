@@ -4,9 +4,12 @@
 export const defaultContent = {
   hero: {
     title: "DELTA SOLUÇÕES",
-    subtitle: "Estratégia que conecta marketing e vendas",
-    quoteLine1: "Não basta gerar demanda.",
-    quoteLine2: "É preciso transformar oportunidades em vendas.",
+    // Posicionamento oficial (Bíblia v1.1): texto exato, destaque em cima e complemento embaixo.
+    quoteLine1: "A primeira solução integrada de crescimento do Brasil.",
+    quoteLine2: "Marketing, tecnologia e vendas num só lugar, com o Método Delta.",
+    // O que fazemos e por quê.
+    subtitle: "Estratégia que conecta marketing e vendas.",
+    why: "Porque não basta gerar demanda. É preciso transformar oportunidades em vendas.",
     badge: "Proposta Comercial",
     cta: "Conhecer o método",
   },
