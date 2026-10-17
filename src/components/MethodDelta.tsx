@@ -118,7 +118,11 @@ function TriangleVisual({ p, phase }: { p: MotionValue<number>; phase: number })
       ))}
 
       {/* lados — firmados um por um */}
-      <g filter="url(#glow)">
+      <g>
+        {/* halo: mesmo traço, mais largo e translúcido */}
+        <motion.path d={`M${C.x},${C.y} L${A.x},${A.y}`} stroke="url(#dg)" strokeWidth="22" strokeOpacity="0.18" strokeLinecap="round" fill="none" style={{ pathLength: sLeft }} />
+        <motion.path d={`M${A.x},${A.y} L${B.x},${B.y}`} stroke="url(#dg)" strokeWidth="22" strokeOpacity="0.18" strokeLinecap="round" fill="none" style={{ pathLength: sRight }} />
+        <motion.path d={`M${B.x},${B.y} L${C.x},${C.y}`} stroke="url(#dg)" strokeWidth="22" strokeOpacity="0.18" strokeLinecap="round" fill="none" style={{ pathLength: sBase }} />
         <motion.path d={`M${C.x},${C.y} L${A.x},${A.y}`} stroke="url(#dg)" strokeWidth="9" strokeLinecap="round" fill="none" style={{ pathLength: sLeft }} />
         <motion.path d={`M${A.x},${A.y} L${B.x},${B.y}`} stroke="url(#dg)" strokeWidth="9" strokeLinecap="round" fill="none" style={{ pathLength: sRight }} />
         <motion.path d={`M${B.x},${B.y} L${C.x},${C.y}`} stroke="url(#dg)" strokeWidth="9" strokeLinecap="round" fill="none" style={{ pathLength: sBase }} />
@@ -158,7 +162,7 @@ function TriangleVisual({ p, phase }: { p: MotionValue<number>; phase: number })
       )}
 
       {/* seta de aceleração saindo pelo vértice */}
-      <motion.g style={{ opacity: arrow }} filter="url(#glow)">
+      <motion.g style={{ opacity: arrow }}>
         <motion.path
           d={`M${CENTROID.x} ${CENTROID.y - 40} L${A.x} -26`}
           stroke="#12D8F2"
@@ -246,7 +250,7 @@ export function MethodDelta() {
           <div className="mx-auto grid w-full max-w-6xl items-center gap-4 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
             {/* visual */}
             <div className="relative order-1 mx-auto aspect-[500/440] w-[min(80vw,40svh)] sm:w-[min(70vw,46svh)] lg:order-2 lg:w-full lg:max-w-[560px]">
-              <div aria-hidden className="pointer-events-none absolute inset-[10%] rounded-full bg-electric/15 blur-[80px]" />
+              <div aria-hidden className="pointer-events-none absolute inset-[10%] rounded-full bg-[radial-gradient(closest-side,rgba(8,123,250,0.24),transparent)]" />
               <TriangleVisual p={p} phase={phase} />
             </div>
 
@@ -287,8 +291,8 @@ export function MethodDelta() {
                     initial={false}
                     animate={
                       i === phase
-                        ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                        : { opacity: 0, y: i < phase ? -18 : 24, filter: "blur(8px)" }
+                        ? { opacity: 1, y: 0 }
+                        : { opacity: 0, y: i < phase ? -18 : 24 }
                     }
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className={`[grid-area:1/1] ${i === phase ? "" : "pointer-events-none"}`}

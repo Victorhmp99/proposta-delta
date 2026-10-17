@@ -18,23 +18,24 @@ function ShineSweep({
   radius?: number | string;
   clip?: string;
 }) {
+  // Faixa de brilho que atravessa o material só com transform (GPU), sem reflow.
   return (
-    <motion.div
+    <div
       aria-hidden
       className="absolute inset-0 overflow-hidden"
       style={{ width: size, height: height ?? size, borderRadius: radius, clipPath: clip }}
     >
-      <motion.div
-        className="absolute top-0 h-full"
+      <div
+        className="shine-sweep absolute top-0 h-full"
         style={{
           width: size * 0.5,
-          background: "linear-gradient(75deg, transparent 0%, rgba(255,255,255,0.6) 45%, transparent 100%)",
-          filter: "blur(2px)",
+          left: -size * 0.5,
+          background: "linear-gradient(75deg, transparent 0%, rgba(255,255,255,0.55) 45%, transparent 100%)",
+          ["--sweep" as string]: `${size * 2}px`,
+          animationDuration: `${speed + 1.2}s`,
         }}
-        animate={{ left: [-size, size * 1.5] }}
-        transition={{ duration: speed, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.2 }}
       />
-    </motion.div>
+    </div>
   );
 }
 

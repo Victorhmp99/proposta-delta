@@ -5,7 +5,6 @@ import Image from "next/image";
 import { asset } from "@/lib/basePath";
 import { Reveal, SlideReveal, RevealStagger, staggerItem } from "./Reveal";
 import { Section, Eyebrow, Kicker } from "./Section";
-import { Tilt3D } from "./Tilt3D";
 import { Float } from "./Float";
 import { DeltaPrism, MetallicOrb, GoldBar, DiamondGem } from "./MaterialOrb";
 import { Confetti } from "./Confetti";
@@ -55,7 +54,7 @@ function BrandEmblem({ sides }: { sides: string[] }) {
       >
         <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-signal shadow-[0_0_12px_3px_rgba(18,216,242,0.8)]" />
       </motion.div>
-      <div aria-hidden className="pointer-events-none absolute inset-[20%] rounded-full bg-electric/25 blur-[70px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-[20%] rounded-full bg-[radial-gradient(closest-side,rgba(8,123,250,0.40),transparent)]" />
 
       <Float distance={10} duration={6} className="absolute inset-[22%] flex items-center justify-center">
         <Image
@@ -81,7 +80,7 @@ function BrandEmblem({ sides }: { sides: string[] }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 + i * 0.15, ease: EASE }}
-            className={`absolute ${pos} rounded-full border border-white/15 bg-ink/80 px-3.5 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-mist backdrop-blur sm:text-xs`}
+            className={`absolute ${pos} rounded-full border border-white/15 bg-ink/90 px-3.5 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-mist sm:text-xs`}
           >
             {s}
           </motion.span>
@@ -215,8 +214,8 @@ export function Difference() {
             {/* scanner */}
             <motion.div
               aria-hidden
-              className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-signal/10 to-transparent"
-              animate={{ top: ["-20%", "100%"] }}
+              className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent via-signal/10 to-transparent"
+              animate={{ y: ["-100%", "480%"] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             />
             <p className="relative mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-mist/50">
@@ -363,9 +362,9 @@ function TeamVisual({ type }: { type: VisualType }) {
         </motion.div>
         <div className="absolute bottom-2 left-3 right-3 h-1 overflow-hidden rounded-full bg-white/15">
           <motion.div
-            animate={{ width: ["10%", "85%", "10%"] }}
+            animate={{ scaleX: [0.1, 0.85, 0.1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="h-full bg-electric"
+            className="h-full w-full origin-left bg-electric"
           />
         </div>
       </div>
@@ -689,7 +688,7 @@ export function Plans() {
   const [unlocked, setUnlocked] = useState(false);
 
   return (
-    <Section id="planos" tone="deep" panel wide className="perspective-1200">
+    <Section id="planos" tone="deep" panel wide>
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[60%] bg-grid opacity-40 mask-radial" />
       <Reveal className="text-center">
         <Eyebrow>{c.eyebrow}</Eyebrow>
@@ -704,10 +703,10 @@ export function Plans() {
             <motion.div
               key={`${plan.name}-${i}`}
               variants={staggerItem}
-              className={meta.featured ? "lg:-mt-4 lg:scale-[1.05]" : ""}
+              className={meta.featured ? "lg:-mt-4" : ""}
             >
-              <Tilt3D
-                className={`glass-3d flex h-full flex-col rounded-2xl border p-6 ${meta.cardBorder} ${meta.cardBg} ${
+              <div
+                className={`glass-3d relative flex h-full flex-col rounded-2xl border p-6 ${meta.cardBorder} ${meta.cardBg} ${
                   meta.featured ? "shadow-[0_0_60px_-12px_rgba(255,213,31,0.45)]" : ""
                 } ${meta.diamond ? "border-glow" : ""}`}
               >
@@ -716,9 +715,9 @@ export function Plans() {
                     {c.featuredBadge}
                   </span>
                 )}
-                <Float distance={6} duration={3.6} delay={i * 0.2} className="mb-5 w-fit">
+                <div className="mb-5 w-fit">
                   <meta.Material />
-                </Float>
+                </div>
                 <p className="mb-1 font-display text-xl font-extrabold leading-tight text-mist">{plan.name}</p>
                 {plan.description && <p className="mb-4 text-xs leading-snug text-mist/55">{plan.description}</p>}
                 <p className={`mb-5 font-display text-2xl font-bold ${meta.featured ? "text-gradient-sun" : meta.accent}`}>
@@ -772,7 +771,7 @@ export function Plans() {
                     )}
                   </AnimatePresence>
                 </div>
-              </Tilt3D>
+              </div>
             </motion.div>
           );
         })}
@@ -1133,9 +1132,7 @@ export function Closing() {
       </div>
       <motion.div
         aria-hidden
-        className="absolute left-1/2 top-1/2 h-[50vh] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-electric/20 blur-[140px]"
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-1/2 h-[50vh] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(8,123,250,0.32),transparent)]"
       />
       <Reveal className="relative z-10">
         <h2 className="text-4xl font-extrabold text-mist sm:text-7xl">

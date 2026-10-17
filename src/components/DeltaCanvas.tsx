@@ -31,7 +31,7 @@ function buildGeometry(): P3[] {
     return { x: Math.cos(a) * R, y: Math.sin(a) * R + 0.12 };
   });
 
-  const edgeSamples = 70;
+  const edgeSamples = 42;
   const addEdge = (ax: number, ay: number, az: number, bx: number, by: number, bz: number, n: number) => {
     for (let i = 0; i <= n; i++) {
       const t = i / n;
@@ -48,7 +48,7 @@ function buildGeometry(): P3[] {
   }
 
   // faces internas com poeira (dá volume)
-  for (let i = 0; i < 260; i++) {
+  for (let i = 0; i < 110; i++) {
     let u = Math.random();
     let v = Math.random();
     if (u + v > 1) {
@@ -62,7 +62,7 @@ function buildGeometry(): P3[] {
 
   // hélice de dados em volta (dupla, como uma fita de DNA)
   const turns = 2.2;
-  const helixN = 220;
+  const helixN = 110;
   for (let k = 0; k < 2; k++) {
     for (let i = 0; i < helixN; i++) {
       const t = i / helixN;
@@ -103,7 +103,7 @@ export function DeltaCanvas({ className }: { className?: string }) {
     function resize() {
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       w = rect.width;
       h = rect.height;
       canvas.width = Math.round(w * dpr);
@@ -115,8 +115,14 @@ export function DeltaCanvas({ className }: { className?: string }) {
       mouse.ty = (e.clientY / window.innerHeight - 0.5) * 2;
     }
 
+    let last = 0;
     function frame(now: number) {
       if (!ctx) return;
+      if (!reduce && now - last < 33) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      last = now;
       const t = reduce ? 0 : (now - start) / 1000;
       mouse.x += (mouse.tx - mouse.x) * 0.05;
       mouse.y += (mouse.ty - mouse.y) * 0.05;
@@ -182,12 +188,6 @@ export function DeltaCanvas({ className }: { className?: string }) {
         ctx.arc(sxp, syp, size, 0, Math.PI * 2);
         ctx.fill();
 
-        if (p.edge && alpha > 0.6) {
-          ctx.fillStyle = `rgba(${g[0] | 0},${g[1] | 0},${g[2] | 0},${alpha * 0.12})`;
-          ctx.beginPath();
-          ctx.arc(sxp, syp, size * 4.5, 0, Math.PI * 2);
-          ctx.fill();
-        }
       }
 
       if (visible && !reduce) raf = requestAnimationFrame(frame);

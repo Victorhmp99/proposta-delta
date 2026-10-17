@@ -50,7 +50,7 @@ export function Section({
     <section
       id={id}
       className={clsx(
-        "relative w-full scroll-mt-20 overflow-hidden px-4 py-24 sm:px-6 sm:py-32",
+        "relative w-full scroll-mt-20 overflow-hidden px-4 py-24 sm:px-6 sm:py-32 [content-visibility:auto] [contain-intrinsic-size:auto_900px]",
         TONE_BG[tone],
         resolvedTransition === "panel" &&
           "rounded-t-[2.5rem] border-t border-white/10 shadow-[0_-30px_60px_-25px_rgba(0,0,0,0.7)]",

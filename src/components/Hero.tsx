@@ -10,7 +10,7 @@ import { DeltaCanvas } from "./DeltaCanvas";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* Texto que entra palavra por palavra, saindo do desfoque. */
+/* Texto que entra palavra por palavra (só opacidade e deslocamento; sem desfoque, que pesa). */
 function SplitWords({
   text,
   delay = 0,
@@ -26,8 +26,8 @@ function SplitWords({
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
-          initial={{ opacity: 0, y: "0.6em", filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: "0.6em" }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: delay + i * 0.06, ease: EASE }}
           className="inline-block whitespace-pre"
         >
@@ -63,7 +63,7 @@ export function TopBar() {
         transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
         className="fixed inset-x-0 top-3 z-[110] px-4"
       >
-        <nav className="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-white/10 bg-ink/60 py-2 pl-4 pr-2 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-white/10 bg-ink/90 py-2 pl-4 pr-2">
           <a href="#topo" aria-label="Delta Soluções, voltar ao topo" className="flex items-center">
             <Image
               src={asset("/brand/logo-horizontal.png")}
@@ -123,15 +123,11 @@ export function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid mask-radial opacity-70" />
       <motion.div
         aria-hidden
-        className="absolute -top-48 left-1/2 h-[70vh] w-[80vw] -translate-x-1/2 rounded-full bg-electric/20 blur-[140px]"
-        animate={{ scale: [1, 1.12, 1], opacity: [0.45, 0.75, 0.45] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-48 left-1/2 h-[70vh] w-[80vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(8,123,250,0.32),transparent)]"
       />
       <motion.div
         aria-hidden
-        className="absolute left-[8%] top-[30%] h-[36vh] w-[30vw] rounded-full bg-iris/20 blur-[120px]"
-        animate={{ x: [0, 40, 0], opacity: [0.3, 0.55, 0.3] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-[8%] top-[30%] h-[36vh] w-[30vw] rounded-full bg-[radial-gradient(closest-side,rgba(129,44,255,0.18),transparent)]"
       />
 
       {/* prisma 3D de partículas */}
@@ -150,7 +146,7 @@ export function Hero() {
       <motion.div
         aria-hidden
         style={{ y: arcY, scale: arcScale, opacity: arcGlow }}
-        className="pointer-events-none absolute left-1/2 top-[calc(100%-110px)] h-[110vw] w-[220vw] -translate-x-1/2 sm:top-[calc(100%-130px)] sm:h-[70vw] sm:w-[150vw]"
+        className="pointer-events-none absolute left-1/2 top-[calc(100%-110px)] will-change-transform h-[110vw] w-[220vw] -translate-x-1/2 sm:top-[calc(100%-130px)] sm:h-[70vw] sm:w-[150vw]"
       >
         <div className="absolute inset-0 rounded-[50%] bg-ink shadow-[0_-2px_0_0_rgba(18,216,242,0.9),0_-30px_80px_-10px_rgba(18,216,242,0.55),0_-80px_180px_-20px_rgba(8,123,250,0.6),0_-140px_260px_-40px_rgba(129,44,255,0.45)]" />
         <div className="absolute inset-x-[30%] -top-[1px] h-[2px] rounded-full bg-gradient-to-r from-transparent via-white to-transparent blur-[1px]" />
@@ -161,7 +157,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-          className="border-glow mb-8 inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.28em] text-mist/80 backdrop-blur"
+          className="border-glow mb-8 inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.28em] text-mist/80"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_10px_2px_rgba(18,216,242,0.8)]" />
           {c.badge}
@@ -180,7 +176,14 @@ export function Hero() {
           <SplitWords text={c.quoteLine1} delay={0.3} />
         </h1>
         <p className="mt-5 max-w-5xl font-display text-lg font-bold leading-snug sm:text-2xl lg:text-[1.65rem]">
-          <SplitWords text={c.quoteLine2} delay={0.75} className="text-gradient-delta" />
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.75, ease: EASE }}
+            className="text-gradient-delta inline-block"
+          >
+            {c.quoteLine2}
+          </motion.span>
         </p>
 
         <motion.div
